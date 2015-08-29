@@ -1,0 +1,32 @@
+<h1>Messages</h1>
+
+<ul id="messages">
+  <% @messages.each do |message| %>
+    <li><%= message.body %></li>
+  <% end %>
+</ul>
+
+<form id="new-message-form">
+  <input type="text" name="body" placeholder="Enter a message" />
+  <input type="submit" />
+</form>
+
+<script type="text/javascript">
+  var ws = new WebSocketRails('localhost:3000/websocket');
+
+  $('#new-message-form').on('submit', function(e) {
+    e.preventDefault();
+
+    var $body = $(e.target).find("input[name='body']");
+
+    ws.trigger('messages.create', {
+      body: $body.val()
+    }, function(message) {
+      console.log('successfully created message: ', message);
+      $('#messages').append('<li>' + message.body + '</li>');
+      $body.val('');
+    }, function(err) {
+      console.log('something went wrong: ', err);
+    });
+  });
+</script>
