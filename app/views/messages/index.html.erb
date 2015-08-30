@@ -14,6 +14,12 @@
 <script type="text/javascript">
   var ws = new WebSocketRails('localhost:3000/websocket');
 
+  var messages = ws.subscribe('messages');
+
+  messages.bind('new', function(message) {
+    $('#messages').append('<li>' + message.body + '</li>');
+  });
+
   $('#new-message-form').on('submit', function(e) {
     e.preventDefault();
 
@@ -23,7 +29,6 @@
       body: $body.val()
     }, function(message) {
       console.log('successfully created message: ', message);
-      $('#messages').append('<li>' + message.body + '</li>');
       $body.val('');
     }, function(err) {
       console.log('something went wrong: ', err);
