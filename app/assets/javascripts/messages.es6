@@ -1,24 +1,28 @@
 $(document).ready(() => {
-  var ws = new WebSocketRails('localhost:3000/websocket');
+  $.get('/ws_host').then(res => {
+    console.log('WebSockets config: ', res);
 
-  var messages = ws.subscribe('messages');
+    var ws = new WebSocketRails(`${res.host}:${res.port}/websocket`);
 
-  messages.bind('new', message => {
-    $('#messages').append(`<li>${message.body}</li>`);
-  });
+    var messages = ws.subscribe('messages');
 
-  $('#new-message-form').on('submit', e => {
-    e.preventDefault();
+    messages.bind('new', message => {
+      $('#messages').append(`<li>${message.body}</li>`);
+    });
 
-    var $body = $(e.target).find("input[name='body']");
+    $('#new-message-form').on('submit', e => {
+      e.preventDefault();
 
-    ws.trigger('messages.create', {
-      body: $body.val()
-    }, message => {
-      console.log('successfully created message: ', message);
-      $body.val('');
-    }, err => {
-      console.log('something went wrong: ', err);
+      var $body = $(e.target).find("input[name='body']");
+
+      ws.trigger('messages.create', {
+        body: $body.val()
+      }, message => {
+        console.log('successfully created message: ', message);
+        $body.val('');
+      }, err => {
+        console.log('something went wrong: ', err);
+      });
     });
   });
 });

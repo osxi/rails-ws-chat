@@ -8,6 +8,8 @@ RailsWsChat::Application.routes.draw do
   # root 'welcome#index'
   root 'messages#index'
 
+  get 'ws_host' => 'application#ws_host'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
