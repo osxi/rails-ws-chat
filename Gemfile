@@ -16,6 +16,7 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
 end
 
 group :development, :test do

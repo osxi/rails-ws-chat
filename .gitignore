@@ -17,3 +17,6 @@
 
 # OS X Desktop Services
 **/.DS_Store
+
+# SimpleCov
+simplecov

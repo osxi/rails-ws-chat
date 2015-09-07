@@ -1,4 +1,9 @@
 ENV["RAILS_ENV"] ||= "test"
+
+require 'simplecov'
+SimpleCov.command_name 'Tests'
+SimpleCov.start 'rails'
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require "minitest/rails/capybara"
