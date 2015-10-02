@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,10 +12,14 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
+  <style>
+    .message-input, .message-input .inline-label, .menu-bar {margin-bottom: 0;}
+    #sidebar, .messages {border-right: 1px solid #eee;}
+    .message-side-bar {border-left: 1px solid #eee;}
+    .avatar-section {border-top: 1px solid #eee;}
+  </style>
 
   <body>
-
-    <%= yield %>
-
+      <%= yield %>
   </body>
 </html>

@@ -1,12 +1,96 @@
-<h1>Messages</h1>
-
-<ul id="messages">
-  <% @messages.each do |message| %>
-    <li><%= message.body %></li>
-  <% end %>
-</ul>
-
-<form id="new-message-form">
-  <input type="text" name="body" placeholder="Enter a message" />
-  <input type="submit" />
-</form>
+<div class="grid-frame">
+  <div class="medium-grid-block collapse medium-3 large-3 vertical panel panel-left panel panel-left" ng-transclude="" zf-panel="" position="left" id="sidebar" zf-closable="panel">
+    <div class="grid-content collapse shrink hide-for-medium ng-scope">
+      <a href="" class="secondary button expand" zf-close="">Close</a>
+    </div>
+		<div class="grid-content collapse shrink ng-scope">
+			<img src="http://placehold.it/400x150&amp;text=Logo">
+		</div>
+    <div class="grid-content ng-scope">
+			<section class="block-list">
+				<header>Rooms</header>
+				<ul>
+					<li>
+						<a href="#">
+							Slam Book
+							<span class="block-list-label">7</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							Foundation Chat
+							<span class="block-list-label">2</span>
+						</a>
+					</li>
+					<li>
+						<a class="success" href="#">
+							LolCats
+							<span class="block-list-label">2</span>
+						</a>
+					</li>
+				</ul>
+				</section>
+				<section class="block-list">
+				<header>People</header>
+				<ul>
+					<li>
+						<a href="#">
+							Glen Coco
+							<span class="block-list-label">2</span>
+						</a>
+					</li>
+					<li>
+						<a class="success" href="#">
+							Guy Guyerson
+							<span class="block-list-label">2</span>
+						</a>
+					</li>
+				</ul>
+			</section>
+      </div>
+      <div class="grid-content collapse shrink avatar-section ng-scope">
+	      <img src="http://placehold.it/50x50">
+	      Regina George
+      </div>
+  </div>
+	<div class="grid-block collapse medium-9 large-9 vertical">
+		<div id="header" class="shrink collapse grid-content">
+			<ul class="menu-bar primary">
+				<li class="hide-for-medium"><a zf-open="sidebar" href="#">Menu</a></li>
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+				<li><a href="#">Link 3</a></li>
+			</ul>
+		</div>
+		<div class="grid-block">
+			<div class="grid-block small-12 medium-9 vertical">
+				<div id="messages" class="grid-content">
+				 <% @messages.each do |message| %>
+		        <p class="messages"><%= message.body %></p>
+		        <hr />
+				  <% end %>
+				</div>
+				<div class="message-input grid-content collapse shrink">
+					<span class="inline-label">
+						<form id="new-message-form">
+			        <input type="text" name="body" placeholder="Enter a message" />
+			        <input class="button" type="submit" />
+			      </form>
+					</span>
+				</div>
+			</div>
+			<div class="grid-content medium-3 show-for-medium message-side-bar">
+				<section class="block-list">
+				<header>In This Room</header>
+					<ul>
+						<li><a href="#">Cady Heron</a></li>
+						<li><a href="#">Kevin Gnapoor</a></li>
+						<li><a href="#">Trang Pak</a></li>
+						<li><a href="#">Coach Carr</a></li>
+						<li><a href="#">Regina George</a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	</div>
+</div>
