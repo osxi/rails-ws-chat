@@ -7,7 +7,7 @@ $(document).ready(() => {
     var messages = ws.subscribe('messages');
 
     messages.bind('new', message => {
-      $('#messages').append(`<li>${message.body}</li>`);
+      $('#messages').append(`<p class="messages">${message.body}</p><hr>`);
     });
 
     $('#new-message-form').on('submit', e => {
